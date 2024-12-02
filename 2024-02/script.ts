@@ -10,8 +10,9 @@ for (const line of data) {
 
   // In case the line has only one number, it is always safe
   if (line.length >= 2) {
+    const firstDiff = line[0] - line[1]
 
-    if (line[0] > line[1]) {
+    if (line[0] > line[1] && firstDiff >= 1 && firstDiff <= 3) {
       for (let i = 1; i < line.length - 1; i++) {
         const diff = (line[i] - line[i + 1])
         if (diff < 1 || diff > 3) {
@@ -20,7 +21,7 @@ for (const line of data) {
         }
       }
 
-    } else if (line[0] < line[1]) {
+    } else if (line[0] < line[1] && firstDiff >= -3 && firstDiff <= -1) {
       for (let i = 1; i < line.length - 1; i++) {
         const diff = (line[i + 1] - line[i])
         if (diff < 1 || diff > 3) {
@@ -28,12 +29,14 @@ for (const line of data) {
           break
         }
       }
+    } else {
+      safe = false
     }
 
   }
 
   if (safe) {
-    console.log(line, safe)
+    console.log(JSON.stringify(line), safe)
     total ++
   }
 }
