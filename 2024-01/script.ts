@@ -1,5 +1,5 @@
 import { DATA } from './data.ts'
-import { DATA_TEST } from './data_test.ts'
+import { DATA_TEST } from './data-test.ts'
 
 const data = DATA as [number, number][]
 
